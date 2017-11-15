@@ -250,6 +250,7 @@ namespace SKYfox
 
             FileStream fs = new FileStream(pdfInputPath, FileMode.Open);
             Doc document = new Doc();
+            document.SetInfo(0, "License", "XeJREBodo/8B4CFUaaCNbYr3eeNJPdtypqTG9dKtO2Mw8kLcHW7sTtBwDWBz5VIFBw==");
             document.Read(fs);
 
             document.Rendering.DotsPerInch = 72;
