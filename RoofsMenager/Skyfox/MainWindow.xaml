@@ -1,0 +1,83 @@
+﻿<Window x:Class="Skyfox.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Skyfox"
+        mc:Ignorable="d"
+        Title="Roofs Manager" Height="566" Width="857" Icon="res/favicon.ico" Closing="Window_Closing">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="res/background.jpg"/>
+        </Grid.Background>
+        <ScrollViewer HorizontalAlignment="Right" Width="262" Margin="0,0,0,32">
+            <Grid x:Name="ToolsGird" HorizontalAlignment="Left" Width="266" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Rectangle HorizontalAlignment="Left" Height="80" Margin="4,201,0,0" Stroke="Black" VerticalAlignment="Top" Width="238" Fill="#CCBCBEC0" Opacity="0.8" OpacityMask="#FF9DA95C"/>
+                <CheckBox x:Name="DWGCheckBox" Content="Відкривати DWG Файл" HorizontalAlignment="Left" Margin="13,211,0,0" VerticalAlignment="Top" Foreground="Black" FontSize="16" FontFamily="Arial" FontWeight="Bold"/>
+                <CheckBox x:Name="ProjDirCheckBox" Content="Відкривати папку проекту" HorizontalAlignment="Left" Margin="13,233,0,0" VerticalAlignment="Top" Foreground="Black" FontSize="16" FontFamily="Arial" FontWeight="Bold"/>
+                <CheckBox x:Name="OdsCheckBox" Content="Відкривати ODS файл" HorizontalAlignment="Left" Margin="13,255,0,0" VerticalAlignment="Top" Foreground="Black" FontSize="16" FontFamily="Arial" FontWeight="Bold"/>
+                <Button x:Name="DwgButton" Content="Відкрити DWG файл" HorizontalAlignment="Left" Height="34" Margin="4,99,0,0" VerticalAlignment="Top" Width="238" FontSize="16" Foreground="Black" Background="DarkSeaGreen" FontFamily="Arial" FontWeight="Bold" Click="DwgButton_Click" BorderBrush="Black"/>
+                <Button x:Name="ProjectDir" Content="Відкрити папку проекту" HorizontalAlignment="Left" Height="34" Margin="4,133,0,0" VerticalAlignment="Top" Width="238" FontSize="16" Foreground="Black" Background="DarkSeaGreen" FontFamily="Arial" FontWeight="Bold" Click="ProjectDir_Click" BorderBrush="Black"/>
+                <Button x:Name="OdsButton" Content="Відкрити ODS файл" HorizontalAlignment="Left" Height="34" Margin="4,167,0,0" VerticalAlignment="Top" Width="238" FontSize="16" Foreground="Black" Background="DarkSeaGreen" FontFamily="Arial" FontWeight="Bold" Click="OdsButton_Click" BorderBrush="Black"/>
+                <TextBox x:Name="_3dModelPrip" HorizontalAlignment="Left" Height="22" Margin="4,281,0,0" TextWrapping="Wrap" Text="3d_model_" VerticalAlignment="Top" Width="141" IsEnabled="False" FontSize="16" FontFamily="Arial" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" BorderBrush="#FF111038">
+                    <TextBox.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="-0.216"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </TextBox.RenderTransform>
+                </TextBox>
+                <TextBox x:Name="_ZamereniPrip" HorizontalAlignment="Left" Height="22" Margin="4,303,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="141" Text="Zaměření_plochy_" TextChanged="_ZamereniPrip_TextChanged" IsEnabled="False" FontSize="16" FontFamily="Arial" FontWeight="Bold" BorderBrush="#FF111038"/>
+                <Button x:Name="_3dModelCopyButton" Content=" Копіювати" HorizontalAlignment="Left" Height="22" Margin="145,281,0,0" VerticalAlignment="Top" Width="97" FontSize="16" Foreground="Black" Background="DarkSeaGreen" FontFamily="Arial" FontWeight="Bold" Click="_3dModelCopyButton_Click" BorderBrush="Black"/>
+                <Button x:Name="_ZamerenyCopyButton" Content=" Копіювати" HorizontalAlignment="Left" Height="22" Margin="145,303,0,0" VerticalAlignment="Top" Width="97" FontSize="16" Foreground="Black" Background="DarkSeaGreen" FontFamily="Arial" FontWeight="Bold" Click="_ZamerenyCopyButton_Click" BorderBrush="Black"/>
+                <Rectangle HorizontalAlignment="Left" Height="103" Margin="4,325,0,0" Stroke="Black" VerticalAlignment="Top" Width="238" Fill="#CCBCBEC0" Opacity="0.8" OpacityMask="#FF9DA95C"/>
+                <RadioButton x:Name="SimpleradioButton" Content="Звичайний дах" HorizontalAlignment="Left" Margin="13,361,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" FontFamily="Arial" IsChecked="True"/>
+                <RadioButton x:Name="FlatradioButton" Content="Плоский дах" HorizontalAlignment="Left" Margin="13,380,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" FontFamily="Arial"/>
+                <RadioButton x:Name="GybridradioButton" Content="Гібридний дах" HorizontalAlignment="Left" Margin="13,400,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" FontFamily="Arial"/>
+                <Label x:Name="label" Content="Тип даху" Margin="74,329,65,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="20" FontWeight="Bold" Height="33"/>
+                <Button x:Name="SetProcesDirButton" Content="Обрати робочу папку" HorizontalAlignment="Left" Height="22" Margin="4,6,0,0" VerticalAlignment="Top" Width="238" FontSize="16" Foreground="Black" Background="DarkSeaGreen" FontFamily="Arial" FontWeight="Bold" Click="SetProcesDirButton_Click" BorderBrush="Black"/>
+                <TextBox x:Name="ProcDirTxt" HorizontalAlignment="Left" Height="23" Margin="71,28,0,0" TextWrapping="Wrap" Text=" " VerticalAlignment="Top" Width="171" IsEnabled="False" BorderBrush="#FF111038"/>
+                <TextBox x:Name="ZpracovatelTXT" HorizontalAlignment="Left" Height="23" Margin="5,28,0,0" TextWrapping="Wrap" Text="SKTAM 4" VerticalAlignment="Top" Width="65"/>
+                <Label x:Name="Values_DWG" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Width="235" FontWeight="Bold" FontSize="16" Margin="5,465,0,0" Background="#FFBCBEC0" BorderBrush="Black" OpacityMask="#FF9DA95C"/>
+                <Rectangle HorizontalAlignment="Left" Height="47" Margin="4,50,0,0" Stroke="Black" VerticalAlignment="Top" Width="236" Fill="#CCBCBEC0" Opacity="0.8" OpacityMask="#FF9DA95C"/>
+                <TextBox x:Name="Adres_proj" HorizontalAlignment="Left" Height="22" Margin="71,51,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="171"/>
+                <TextBox x:Name="GPSOfProj" HorizontalAlignment="Left" Height="22" Margin="71,74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="171"/>
+                <Label x:Name="AdressLabel" Content="Адреса:" Margin="5,51,195,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="14" FontWeight="Bold" Height="43"/>
+                <Label x:Name="GpsLabel" Content="GPS:" Margin="5,73,195,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="14" FontWeight="Bold" Height="23"/>
+                <Button x:Name="CheckButton" Content="Перевірити ODS файл" HorizontalAlignment="Left" Height="34" Margin="4,430,0,0" VerticalAlignment="Top" Width="238" FontSize="16" Foreground="Black" Background="DarkSeaGreen" FontFamily="Arial" FontWeight="Bold" Click="CheckButton_Click" BorderBrush="Black" OpacityMask="#FF4C5053"/>
+            </Grid>
+        </ScrollViewer>
+
+        <ListBox x:Name="ProjectListBox" HorizontalAlignment="Left" Margin="10,10,0,155" Width="238" FontFamily="Arial" FontWeight="Bold" SelectionChanged="ProjectListBox_SelectionChanged"/>
+        <Image x:Name="imageScrin" Margin="253,10,267,37">
+            <Image.Effect>
+                <BlurEffect/>
+            </Image.Effect>
+        </Image>
+        <Grid HorizontalAlignment="Left" Margin="10,0,0,25" Width="238" Height="122" VerticalAlignment="Bottom">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="Progect1runButton" Content="Розпочати проект" HorizontalAlignment="Left" Height="34" VerticalAlignment="Top" Width="238" FontSize="16" Foreground="Black" Background="DarkSeaGreen" FontFamily="Arial" FontWeight="Bold" Click="Progect1runButton_Click" BorderBrush="Black"/>
+            <Button x:Name="SaveODSFileButton" Content="Зберегти ODS файл" HorizontalAlignment="Left" Height="34" Margin="0,40,0,0" VerticalAlignment="Top" Width="238" FontSize="16" Foreground="Black" Background="DarkSeaGreen" FontFamily="Arial" FontWeight="Bold" Click="SaveODSFileButton_Click" BorderBrush="Black"/>
+            <Button x:Name="EndProjButton" Content="Завершити та показати архів" HorizontalAlignment="Left" Height="34" Margin="0,78,0,0" VerticalAlignment="Top" Width="238" FontSize="16" Foreground="Black" Background="DarkSeaGreen" FontFamily="Arial" FontWeight="Bold" Click="EndProjButton_Click" BorderBrush="Black"/>
+        </Grid>
+        <Grid Height="32" VerticalAlignment="Bottom">
+            <Rectangle Stroke="Black" Fill="#CCBCBEC0" Opacity="0.8" OpacityMask="#FF9DA95C"/>
+            <Label x:Name="label1" Content="Кількість площ:" HorizontalAlignment="Left" VerticalAlignment="Top" Width="148" FontWeight="Bold" FontSize="16" Height="37" Margin="-2,-2,0,-3"/>
+            <TextBox x:Name="NumOfPl" HorizontalAlignment="Left" Height="24" Margin="137,3,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="42" TextChanged="_ZamereniPrip_TextChanged" IsEnabled="False" FontSize="16" FontFamily="Arial" FontWeight="Bold" TextAlignment="Center" BorderBrush="#FF111038"/>
+            <Label x:Name="label1_Copy" Content="Кількість величин:" HorizontalAlignment="Left" VerticalAlignment="Top" Width="159" FontWeight="Bold" FontSize="16" Height="37" Margin="189,-2,0,-3"/>
+            <TextBox x:Name="NumOfVl" Height="24" Margin="342,3,0,0" TextWrapping="Wrap" VerticalAlignment="Top" TextChanged="_ZamereniPrip_TextChanged" IsEnabled="False" FontSize="16" FontFamily="Arial" FontWeight="Bold" TextAlignment="Center" BorderBrush="#FF111038" HorizontalAlignment="Left" Width="39"/>
+            <RadioButton x:Name="radioButton" Content="Робота" HorizontalAlignment="Left" Margin="731,10,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" FontFamily="Arial" IsChecked="True" Visibility="Hidden"/>
+            <RadioButton x:Name="radioButton1" Content="Перевірка" HorizontalAlignment="Left" Margin="628,10,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" FontFamily="Arial" Visibility="Hidden"/>
+            <Button x:Name="ChangeLangUA" Content="UA" Margin="0,0,10,0" FontSize="16" Foreground="Black" Background="DarkSeaGreen" FontFamily="Arial" FontWeight="Bold" Click="ChangeLangUA_Click" BorderBrush="Black" OpacityMask="#FF4C5053" HorizontalAlignment="Right" Width="40"/>
+            <Button x:Name="ChangeLangEN" Content="EN" HorizontalAlignment="Right" Height="32" Margin="0,0,50,0" VerticalAlignment="Top" Width="40" FontSize="16" Foreground="Black" Background="#FF3D863D" FontFamily="Arial" FontWeight="Bold" Click="ChangeLangEN_Click" BorderBrush="Black" OpacityMask="#FF4C5053"/>
+        </Grid>
+
+    </Grid>
+</Window>
